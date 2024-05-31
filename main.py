@@ -4,11 +4,6 @@ import tkinter
 import os
 from crossref.restful import Works
 
-doi = ''
-
-labels = {}
-inputs = {}
-words = {}
 texts = {'title': 'Title', \
         'author': 'Authors', \
         'what': 'What is this?', \
@@ -18,6 +13,8 @@ texts = {'title': 'Title', \
         'discussion': 'Discussion', \
         'next': 'Read next'}
 
+inputs = {}
+
 font = 'Source Code Pro'
 
 font_size_small = 12
@@ -26,11 +23,9 @@ font_size_big = 16
 small_font = (font, font_size_small)
 big_font = (font, font_size_big)
 
-size = [400, 600]
-space = int(font_size_big)
-
 def main():
-    global labels, inputs
+    global inputs
+    labels ={}
     y0 = 0
 
     root = tkinter.Tk()
@@ -67,7 +62,7 @@ def main():
 
         y0 += inputs[key].winfo_reqheight()
 
-    btn_save = tkinter.Button(root, text='Save', command=lambda: save_text(words), font=small_font)
+    btn_save = tkinter.Button(root, text='Save', command=lambda: save_text(inputs), font=small_font)
     btn_save.place(x=0, y=y0)
     
     y0 += btn_save.winfo_reqheight()
@@ -77,7 +72,7 @@ def main():
     root.state('normal')
     root.mainloop()
 
-def get_paper(doi_input):
+def get_paper(doi_input: tkinter.Text):
     global doi
     doi = doi_input.get(1.0, tkinter.END+'-1c')
     if (doi != ''):
@@ -95,32 +90,14 @@ def get_paper(doi_input):
         pass
 
 
-def save_text(info: dict):
-    title = info.get('title', 'notitle')
-    author = info.get('author', 'noname')
-    what = info.get('what', 'nowhat')
-    excellent = info.get('excellent', 'noexcellent')
-    core = info.get('core', 'nocore')
-    validation = info.get('validation', 'novalidation')
-    discussion = info.get('discussion', 'nodiscussion')
-    paper = info.get('next', 'nonext')
-
+def save_text(inputs: dict[tkinter.Text]):
     nl = '\n\n'
 
-    text = '# ' + title + nl + \
-        '## ' + author + nl + \
-        '### ' + texts['what'] + nl + \
-        what + nl + \
-        '### ' + texts['excellent'] + nl + \
-        excellent + nl + \
-        '### ' + texts['core'] + nl + \
-        core + nl + \
-        '### ' + texts['validation'] + nl + \
-        validation + nl + \
-        '### ' + texts['discussion'] + nl + \
-        discussion + nl + \
-        '### ' + texts['next'] + nl + \
-        paper + nl
+    output_text = ''
+
+    for key in list(texts.keys()):
+        output_text += '### ' + texts[key] + nl
+        output_text += inputs[key].get(1.0, tkinter.END+'-1c') + nl
 
     md_file_name = doi + '.md'
     md_file_path = 'data/' + md_file_name
@@ -130,7 +107,7 @@ def save_text(info: dict):
         os.makedirs(file_path)
 
     with open(md_file_path, 'w') as file:
-        file.write(text)
+        file.write(output_text)
 
 if __name__ == '__main__':
     main()
