@@ -7,14 +7,7 @@ A simple GUI tool to summarize the contents of a paper.
 
 ## Require
 - Python 3
-- Tkinter
-```
-pip install tkinter
-```
-- PyAutoGUI
-```
-pip install pyautogui
-```
+
 - Crossref API
 ```
 pip install crossrefapi

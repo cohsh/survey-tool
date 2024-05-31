@@ -2,7 +2,6 @@
 # -*- coding: utf8 -*-
 import tkinter
 import os
-import pyautogui as pag
 from crossref.restful import Works
 
 doi = ''
@@ -11,18 +10,17 @@ labels = {}
 inputs = {}
 words = {}
 texts = {'title': 'Title', \
-         'author': 'Authors', \
-         'what': 'What is this?', \
-         'excellent': 'Excellent points compared to previous studies', \
-         'core': 'Core of Methods', \
-         'validation': 'Validation', \
-         'discussion': 'Discussion', \
-         'next': 'Read next'}
+        'author': 'Authors', \
+        'what': 'What is this?', \
+        'excellent': 'Excellent points compared to previous studies', \
+        'core': 'Core of Methods', \
+        'validation': 'Validation', \
+        'discussion': 'Discussion', \
+        'next': 'Read next'}
 
 font_big = {'name': 'Source Code Pro', 'size': 24}
 font_small = {'name': 'Source Code Pro', 'size': 12}
-size_width, size_height = pag.size()
-size = [size_height, size_width]
+size = [400, 600]
 space = int(size[0]*0.02)
 
 y0 = 0
