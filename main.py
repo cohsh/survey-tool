@@ -20,62 +20,64 @@ texts = {'title': 'Title', \
 
 font = 'Source Code Pro'
 
-small_font = (font, 12)
-big_font = (font, 24)
+pt2px = 4.0 / 3.0
+
+font_size_small = 12
+font_size_big = 16
+
+small_font = (font, font_size_small)
+big_font = (font, font_size_big)
 
 size = [400, 600]
-space = int(size[0]*0.02)
-
-y0 = 0
+space = int(font_size_big)
 
 def main():
     global labels, inputs
+    y0 = 0
 
     root = tkinter.Tk()
-    root.geometry(str(size[0])+'x'+str(size[1]))
     root.title('Survey Tool')
 
     subtitle = tkinter.Label(text='Survey Tool', font=big_font)
     subtitle.place(x=0, y=y0)
 
-    add_spacing(2)
+    y0 += subtitle.winfo_reqheight()
 
     doi_label = tkinter.Label(text='DOI', font=small_font)
     doi_label.place(x=0, y=y0)
 
-    add_spacing(1)
+    y0 += doi_label.winfo_reqheight()
 
     doi_input = tkinter.Text(width=50, height=1, font=small_font)
     doi_input.place(x=0, y=y0)
 
-    add_spacing(1)
+    y0 += doi_input.winfo_reqheight()
 
     doi_btn = tkinter.Button(root, text='Get', command=lambda: get_paper(doi_input), font=small_font)
     doi_btn.place(x=0, y=y0)
     
-    add_spacing(1)
+    y0 += doi_btn.winfo_reqheight()
 
     for key in list(texts.keys()):
         labels[key] = tkinter.Label(text=texts[key], font=small_font)
         labels[key].place(x=0, y=y0)
 
-        add_spacing(1)
+        y0 += labels[key].winfo_reqheight()
 
         inputs[key] = tkinter.Text(width=50, height=3, font=small_font)
         inputs[key].place(x=0, y=y0)
 
-        add_spacing(3)
+        y0 += inputs[key].winfo_reqheight()
 
     btn_save = tkinter.Button(root, text='Save', command=lambda: save_text(words), font=small_font)
     btn_save.place(x=0, y=y0)
+    
+    y0 += btn_save.winfo_reqheight()
+
+    root.geometry(str(doi_input.winfo_reqwidth())+'x'+str(int(y0)))
 
     root.state('normal')
     root.mainloop()
-
-def add_spacing(n):
-    global y0
-    for i in range(n):
-        y0 += space
 
 def get_paper(doi_input):
     global doi
