@@ -4,14 +4,16 @@ import tkinter
 import os
 from crossref.restful import Works
 
-texts = {'title': 'Title', \
-        'author': 'Authors', \
-        'what': 'What is this?', \
-        'excellent': 'Excellent points compared to previous studies', \
-        'core': 'Core of Methods', \
-        'validation': 'Validation', \
-        'discussion': 'Discussion', \
-        'next': 'Read next'}
+texts = {'title': 'Title',
+        'author': 'Authors',
+        'what': 'What is this paper?',
+        'impressive': 'What is impressive compared to previous research?',
+        'key': 'What are the key techniques or methods?',
+        'validation': 'How do they validate its effectiveness?',
+        'discussion': 'Is there any discussions?',
+        'next': 'What is the next paper to read?'}
+
+lines = []
 
 inputs = {}
 
