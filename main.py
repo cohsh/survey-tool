@@ -13,8 +13,6 @@ texts = {'title': 'Title',
         'discussion': 'Is there any discussions?',
         'next': 'What is the next paper to read?'}
 
-lines = []
-
 inputs = {}
 
 font = 'Source Code Pro'
