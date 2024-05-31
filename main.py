@@ -20,8 +20,6 @@ texts = {'title': 'Title', \
 
 font = 'Source Code Pro'
 
-pt2px = 4.0 / 3.0
-
 font_size_small = 12
 font_size_big = 16
 
