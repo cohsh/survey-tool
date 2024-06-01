@@ -10,7 +10,7 @@ texts = {'title': 'Title',
         'impressive': 'What is impressive compared to previous research?',
         'key': 'What are the key techniques or methods?',
         'validation': 'How do they validate its effectiveness?',
-        'discussion': 'Is there any discussions?',
+        'discussion': 'Are there any discussions?',
         'next': 'What is the next paper to read?'}
 
 inputs = {}
