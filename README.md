@@ -2,7 +2,7 @@
 A simple GUI tool to summarize the contents of a paper.
 
 ## Screenshot
-![](images/screenshot.png)
+<img src="images/screenshot.png" width="50%">
 
 ## Feature
 - The title and author's name can be retrieved from DOI.
