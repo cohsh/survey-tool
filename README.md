@@ -1,6 +1,9 @@
 # Survey Tool
 A simple GUI tool to summarize the contents of a paper.
 
+## Screenshot
+![](images/screenshot.png)
+
 ## Feature
 - The title and author's name can be retrieved from DOI.
 - The entered text can be saved as a Markdown file.
